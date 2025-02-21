@@ -1,14 +1,16 @@
-def p(b):
-    for r in b:
-        print(" | ".join(r))
+def print_board(board):
+    """Prints the Tic-Tac-Toe board."""
+    for row in board:
+        print(" | ".join(row))
         print("-" * 5)
 
 
-def c_w(b, p):
+def check_winner(board, player):
+    """Checks if the given player has won the game."""
     for i in range(3):
-        if all(b[i][j] == p for j in range(3)) or all(b[j][i] == p for j in range(3)):
+        if all(board[i][j] == player for j in range(3)) or all(board[j][i] == player for j in range(3)):
             return True
-    if all(b[i][i] == p for i in range(3)) or all(b[i][2 - i] == p for i in range(3)):
+    if all(board[i][i] == player for i in range(3)) or all(board[i][2 - i] == player for i in range(3)):
         return True
     return False
 
